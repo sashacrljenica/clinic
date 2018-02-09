@@ -1,2 +1,2 @@
 # clinic
-Ovo je test
+This is Java Web Application with Servlets and JSP files. 
