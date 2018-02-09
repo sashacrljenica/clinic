@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration Admin</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body id="body_lightblue">
+	<div id="div1">
+		<h1>Add New Admin</h1>
+		<form id="form1" action="SaveAdmin" method="post">
+			<table>
+				<tr>
+					<td>Name and Surname:</td>
+					<td><input type="text" name="nameAndSurname"
+						required="required" /></td>
+				</tr>
+				<tr>
+					<td>User Name:</td>
+					<td><input type="text" name="userName" required="required" /></td>
+				</tr>
+				<tr>
+					<td>Password:</td>
+					<td><input type="password" name="password" required="required" /></td>
+				</tr>
+				<tr>
+					<td>Re enter Password:</td>
+					<td><input type="password" name="repassword"
+						required="required" /></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="Save Admin" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

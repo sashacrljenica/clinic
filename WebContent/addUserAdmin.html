@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration User</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body id="body_lightblue">
+	<div id="div1">
+		<h1>Add New User</h1>
+		<form id="form3" action="SaveUserAdmin" method="post">
+			<table>
+				<tr>
+					<td>User Name:</td>
+					<td><input type="text" name="userName" required="required" /></td>
+				</tr>
+				<tr>
+					<td>Password:</td>
+					<td><input type="password" name="password" required="required" /></td>
+				</tr>
+				<tr>
+					<td>Re enter Password:</td>
+					<td><input type="password" name="repassword"
+						required="required" /></td>
+				</tr>
+				<tr>
+					<td>Name and Surname:</td>
+					<td><input type="text" name="nameAndSurname"
+						required="required" /></td>
+				</tr>
+				<tr>
+					<td>Address:</td>
+					<td><input type="text" name="address" required="required" /></td>
+				</tr>
+				<tr>
+					<td>Phone number:</td>
+					<td><input type="text" name="phoneNumber" required="required" /></td>
+				</tr>
+				<tr>
+					<td>Email:</td>
+					<td><input type="email" name="email" required="required" /></td>
+				</tr>
+				<tr>
+					<td>Number of ID card:</td>
+					<td><input type="text" name="numberOfIdCard"
+						required="required" /></td>
+				</tr>
+				<tr>
+					<td>Blood type:</td>
+					<td><select name="bloodType" style="width: 80%">
+							<option>O+</option>
+							<option>A+</option>
+							<option>B+</option>
+							<option>O-</option>
+							<option>A-</option>
+							<option>AB+</option>
+							<option>B-</option>
+							<option>AB-</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td>Sex:</td>
+					<td><input type="radio" name="sex" value="male"
+						checked="checked" />Male <input type="radio" name="sex"
+						value="female" />Female</td>
+				</tr>
+				<tr>
+					<td>Name of job:</td>
+					<td><select name="nameOfJob" style="width: 80%;">
+							<option></option>
+							<option>nurse</option>
+							<option>doctor</option>
+							<option>tehnician</option>
+							<option>helpful staff</option>
+							<option>student</option>
+							<option>practician</option>
+							<option>official</option>
+							<option>sheriff's officer</option>
+							<option>other</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td>TypeOfUsers:</td>
+					<td><input type="radio" name="typeOfUsers" value="patient"
+						checked="checked" />Patient <input type="radio"
+						name="typeOfUsers" value="medic" />Medical Staff</td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="Save User By Admin" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

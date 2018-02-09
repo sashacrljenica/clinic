@@ -1,0 +1,142 @@
+#form1 {
+	margin: 0 auto;
+	width: 25%;
+	text-align: center;
+	font-size: large;
+	font-weight: bold;
+}
+
+#form2 {
+	margin: 0 auto;
+	width: 100%;
+	text-align: left;
+	padding-right: 2%;
+}
+
+#form3 {
+	margin: 0 auto;
+	width: 40%;
+	text-align: center;
+	font-size: large;
+	font-weight: bold;
+}
+
+#form4 {
+	margin: 0 auto;
+	width: 20%;
+	text-align: center;
+	font-size: larger;
+	font-weight: bold;
+}
+
+#form5 {
+	margin: 0 auto;
+	width: 50%;
+	text-align: center;
+	font-size: larger;
+	font-weight: bold;
+}
+
+#form6 {
+	margin: 0 auto;
+	width: 60%;
+}
+
+#div1 {
+	text-align: center;
+}
+
+#div2 {
+	text-align: right;
+}
+
+td {
+	text-align: right;
+}
+
+tr {
+	text-align: right;
+}
+
+#center {
+	text-align: center;
+}
+
+#left {
+	text-align: left;
+}
+
+#right {
+	text-align: right;
+}
+
+#body_index {
+	/* 	background: url(img/01.jpg) no-repeat center center fixed #000; */
+	/* 	-webkit-background-size: cover; */
+	/* 	-moz-background-size: cover; */
+	/* 	-o-background-size: cover; */
+	/* 	background-size: cover; */
+	/*  background-image: url("img/01.jpg");  */
+	background: url(../img/01.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+
+	/* 	background: url(img/01.jpg); */
+	/* 	background-repeat: no-repeat; */
+	/* 	background-size: 100% 400%; */
+}
+
+#body_login {
+	/* 	background: url(../img/login.jpg); */
+	/* 	background-repeat: no-repeat; */
+	/* 	background-size: 100% auto; */
+	background: url(../img/login.jpg) no-repeat center center fixed #000;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+#body_lightblue {
+	background-color: #c3e7f4;
+}
+
+.fl {
+	float: left;
+	padding-right: 1%;
+}
+
+.fr {
+	float: right;
+	padding-left: 1%;
+}
+
+#clear {
+	clear: both;
+}
+
+#footer {
+	text-align: center;
+}
+
+#lista {
+	height: 2em;
+	text-align: center;
+	font-style: normal;
+	font-size: 150%;
+	font-weight: bold;
+	margin: 0 auto;
+	width: 65%;
+}
+
+#lista li {
+	line-height: 3em;
+	float: left;
+	list-style: none;
+	padding-left: 1%;
+	padding-right: 1%;
+}
+
+#lista li:hover {
+	background-color: orange;
+}
