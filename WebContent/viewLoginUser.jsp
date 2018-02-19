@@ -12,36 +12,42 @@
 <%@ page import="java.util.*,dao.*,model.*"%>
 	<%
 		String pageid;
-		pageid = request.getParameter("page");
-		String totalS;
-		totalS = request.getParameter("total");
-		
-		int pageidInt;
-		int total;
-		
-		if (pageid == null || pageid.equals("")) {
-			pageidInt = 1;
-		} else {
-			int pageidInt02 = Integer.parseInt(pageid);
-			pageidInt = pageidInt02;
-		}
-		
-		if (totalS == null) {
-			total = 5;
-		} else {
-			int totalInt = Integer.parseInt(totalS);
-			total = totalInt;
-		}
-		
-		// Paginacija 
-		int pageBase = pageidInt;
-		if (pageBase == 1) {
-		} else {
-			pageBase = pageBase - 1;
-			pageBase = pageBase * total + 1;
-		}
-		
+			pageid = request.getParameter("page");
+			String totalS;
+			totalS = request.getParameter("total");
+			
+			int pageidInt;
+			int total;
+			
+			if (pageid == null || pageid.equals("")) {
+		pageidInt = 1;
+			} else {
+		int pageidInt02 = Integer.parseInt(pageid);
+		pageidInt = pageidInt02;
+			}
+			
+			if (totalS == null) {
+		total = 5;
+			} else {
+		int totalInt = Integer.parseInt(totalS);
+		total = totalInt;
+			}
+			
+			// Paginacija 
+			int pageBase = pageidInt;
+			if (pageBase == 1) {
+			} else {
+		pageBase = pageBase - 1;
+		pageBase = pageBase * total + 1;
+			}
+			
+		// Lista svih logovanih Usera
+		List<Login> listAllLoginUser = LoginDao.getAllLogin();
 
+		//Ukupan broj Usera u bazi
+		int totalUser = listAllLoginUser.size();
+
+		int pageLast = totalUser / total + 1;
 	%>
 	
 	<a href="viewAdmin.jsp?page=1">Back to Home page of admin</a>
@@ -49,29 +55,29 @@
 	<h1 id="center">Table of Login User:</h1>
 	
 	<%
-			List<LoginCurrent> listLoginUser = LoginCurrentDao.getRecords(pageBase, total);
-			List<User> listUser = UserDao.getAllUsers();
+			List<Login> listLogin = LoginDao.getRecords(pageBase, total);
+// 			List<User> listUser = UserDao.getAllUsers();
+// 			List<Login> listLogin=LoginDao.getAllLogin();
 			
-			if (listLoginUser.isEmpty() && pageidInt != 1) {
+			if (listLogin.isEmpty() && pageidInt != 1) {
 				response.sendRedirect("viewLoginUser.jsp?page=" + (pageidInt - 1));
 			}
 			// Prikaz tabele logovanih Usera
-			if (!listLoginUser.isEmpty()) {
+			if (!listLogin.isEmpty()) {
 				out.print("<table border='1' width='100%'");
-				out.print("<tr><th>LoginID</th><th>LoginDateTime</th><th>UserID</th><th>Edit</th><th>Delete</th></tr>");
-				for (LoginCurrent e : listLoginUser) {
+				out.print("<tr><th>LoginID</th><th>LoginDateTime</th><th>UserName</th><th>Type of User</th><th>Edit</th><th>Delete</th></tr>");
+				for (Login e : listLogin) {
 					out.print("<tr><td>"
 							+ e.getLoginID()
 							+ "</td><td>"
-							+ e.getLoginDateTime().toLocaleString()
+							+ e.getDatetime().toLocaleString()
 							+ "</td><td>"
-							+ listUser.get(e.getUserID() - 1)
-									.getNameAndSurname() +
+							+ e.getUser().getNameAndSurname() +
 
-							"</td>" + "<td><a href='editUser.jsp?id="
-							+ listUser.get(e.getUserID() - 1).getUserID()
+							"</td><td>"+ e.getUser().getTypeOfUsers() + "<td><a href='editUser.jsp?id="
+							+ e.getUser().getUserID()
 							+ "'>edit</a></td><td><a href='Delete?id="
-							+ listUser.get(e.getUserID() - 1).getUserID()
+							+ e.getUser().getUserID()
 							+ "'>delete</a></td></tr>");
 				}
 				out.print("</table>");
@@ -90,51 +96,50 @@
 				}
 
 				out.print("<a href='viewLoginUser.jsp?page=" + (pageidInt + 1)
-						+ "'> | ...Next</a><br>");
+						+ "'> | ...Next</a>");
+				
+				out.print("<a href='viewLoginUser.jsp?page=" + pageLast
+						+ "'> | ...Page Last</a>");
 			}
 
-			out.print("<p>Ime Usera na poziciji 4 u listi: " + listUser.get(3).getNameAndSurname() + "</p>");
+// 			out.print("<p>Ime Usera na poziciji 4 u listi: " + listLogin. + "</p>");
 		%>
 		<h3>Drugi nacin</h3>
 	<%
-		List<LoginCurrentInner> listLogin = LoginCurrentDao
-				.getAllLoginUsersByName();
+		List<LoginCurrentInner> listLoginInner = LoginDao.getAllLoginUsersByName();
 
 		if (!listLogin.isEmpty()) {
 			out.print("<table border='1' width='100%'");
-			out.print("<tr><th>LoginID</th><th>LoginDateTime</th><th>UserID</th></tr>");
-			for (LoginCurrentInner l : listLogin) {
+			out.print("<tr><th>LoginID</th><th>LoginDateTime</th><th>UserName</th></tr>");
+			for (LoginCurrentInner l : listLoginInner) {
 				out.print("<tr><td>" + l.getLoginCurrentID() + "</td><td>"
 						+ l.getDatetime().toLocaleString() + "</td><td>"
-						+ l.getNameAndSurname() + 
-						
-						
-						"</td></tr>");
+						+ l.getNameAndSurname() + "</td></tr>");
 			}
 			out.print("</table>");
 			out.print("<br>");
 		}
 		
-		out.print("<h3>Treci nacin</h3>");
+// 		out.print("<h3>Treci nacin</h3>");
 		
 		//  3. NacinPrikaz tabele logovanih Usera
-		List<Login> listLogin03 = LoginDao.getAllLogin();
-		if (!listLogin03.isEmpty()) {
-			out.print("<table border='1' width='100%'");
-			out.print("<tr><th>LoginID</th><th>LoginDateTime</th><th>UserID</th><th>Edit</th><th>Delete</th></tr>");
-			for (Login user : listLogin03) {
-				out.print("<tr><td>" + user.getLoginID() + "</td><td>"
-						+ user.getDatetime().toLocaleString() + "</td><td>"
-						+ user.getUser().getNameAndSurname() +
+// 		List<Login> listLogin03 = LoginDao.getAllLogin();
+// 		if (!listLogin03.isEmpty()) {
+// 			out.print("<table border='1' width='100%'");
+// 			out.print("<tr><th>LoginID</th><th>LoginDateTime</th><th>UserID</th><th>Edit</th><th>Delete</th></tr>");
+// 			for (Login user : listLogin03) {
+// 				out.print("<tr><td>" + user.getLoginID() + "</td><td>"
+// 						+ user.getDatetime().toLocaleString() + "</td><td>"
+// 						+ user.getUser().getNameAndSurname() +
 
-						"</td>" + "<td><a href='editUser.jsp?id="
-						+ user.getUser().getUserID()
-						+ "'>edit</a></td><td><a href='Delete?id="
-						+ user.getUser().getUserID()
-						+ "'>delete</a></td></tr>");
-			}
-			out.print("</table>");
-		}
+// 						"</td>" + "<td><a href='editUser.jsp?id="
+// 						+ user.getUser().getUserID()
+// 						+ "'>edit</a></td><td><a href='Delete?id="
+// 						+ user.getUser().getUserID()
+// 						+ "'>delete</a></td></tr>");
+// 			}
+// 			out.print("</table>");
+// 		}
 	%>
 </body>
 </html>

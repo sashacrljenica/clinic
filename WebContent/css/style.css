@@ -126,7 +126,8 @@ tr {
 	font-size: 150%;
 	font-weight: bold;
 	margin: 0 auto;
-	width: 65%;
+	width: 100%;
+	padding-left: 10%;
 }
 
 #lista li {

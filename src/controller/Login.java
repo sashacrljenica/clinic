@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import model.Admin;
 import model.User;
 import dao.AdminDao;
-import dao.LoginCurrentDao;
+import dao.LoginDao;
 import dao.UserDao;
 
 /**
@@ -70,17 +70,17 @@ public class Login extends HttpServlet {
 			session.setAttribute("name", n);
 			session.setAttribute("user", user);
 			// Da bi snimili tekuceg korisnika koji se loguje u tabelu
-			LoginCurrentDao.save(user);
+			LoginDao.save(user);
 			response.sendRedirect("doctorAppointment.jsp");
 		} else if (UserDao.validateMedic(n, p) && user.getNameOfJob().equals("doctor")) {
 			session.setAttribute("name", n);
 			session.setAttribute("user", user);
-			LoginCurrentDao.save(user);
+			LoginDao.save(user);
 			response.sendRedirect("takeMedication.jsp");
 		} else if (UserDao.validateMedic(n, p) && !user.getNameOfJob().equals("doctor")) {
 			session.setAttribute("name", n);
 			session.setAttribute("user", user);
-			LoginCurrentDao.save(user);
+			LoginDao.save(user);
 			response.sendRedirect("medicalStaffTools.jsp");
 		} 
 		

@@ -58,6 +58,14 @@
 		if (list.isEmpty() && pageidInt != 1) {
 			response.sendRedirect("viewAdmin.jsp?page=" + (pageidInt - 1));
 		}
+		
+		// Lista svih Usera
+		List<User> listAllUser = UserDao.getAllUsers();
+
+		//Ukupan broj Usera u bazi
+		int totalUser = listAllUser.size();
+
+		int pageLast = totalUser / total + 1;
 
 		// Ako je parametar name iz sesije prazan, znaci da se admin izlogovao i sprecavamo neautorizovan pristup stranici!
 		if (name == null || admin == null) {
@@ -74,7 +82,6 @@
 				out.print("<div class='fr'><p style='color: blue;'>Hello, "
 						+ name + " , Welcome to Admin Profile!</p></div>");
 			}
-			
 
 			out.println("<h1>Users List</h1>");
 
@@ -130,6 +137,9 @@
 
 			out.print("<a href='viewAdmin.jsp?page=" + (pageidInt + 1)
 					+ "'> | ...Next</a>");
+			
+			out.print("<a href='viewAdmin.jsp?page=" + pageLast
+					+ "'> | ...Page Last</a>");
 
 		}
 	%>
