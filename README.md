@@ -1,5 +1,5 @@
 # clinic
-This is Java Web Application with Servlets andJSP files. Application uses MySql database.
+This is Java Web Application with Servlets and JSP files. Application uses MySql database.
 The application uses 3 groups of users. These are patients, medical staff, and administrators. 
 Patients are registered and logged. They choose a specific medical department at the clinic, 
 then a desired doctor with whom they want to schedule a review and appointment. 
