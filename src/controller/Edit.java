@@ -75,33 +75,33 @@ public class Edit extends HttpServlet {
 		u.setNameOfJob(nameOfJob);
 		u.setTypeOfUsers(typeOfUsers);
 
-//		if (UserDao.validateByUserNameExist(name)
-//				&& typeOfUsers.equals("patient")) {
-//			out.println("<p style='color: red;text-align: center;'>User name for patient exist, please choice another User name for updating!</p>");
-//			request.getRequestDispatcher("addUserPatient.html").include(
-//					request, response);
-//		} else if (UserDao.validateByUserNameExist(name)
-//				&& typeOfUsers.equals("medic")) {
-//			out.println("<p style='color: red;text-align: center;'>User name for medic exist, please choice another User name for updating!</p>");
-//			request.getRequestDispatcher("addUserMedic.html").include(request,
-//					response);
-//		} else 
-			if (password.equals(repassword)) {
+		// if (UserDao.validateByUserNameExist(name)
+		// && typeOfUsers.equals("patient")) {
+		// out.println("<p style='color: red;text-align: center;'>User name for patient exist, please choice another User name for updating!</p>");
+		// request.getRequestDispatcher("addUserPatient.html").include(
+		// request, response);
+		// } else if (UserDao.validateByUserNameExist(name)
+		// && typeOfUsers.equals("medic")) {
+		// out.println("<p style='color: red;text-align: center;'>User name for medic exist, please choice another User name for updating!</p>");
+		// request.getRequestDispatcher("addUserMedic.html").include(request,
+		// response);
+		// } else
+		if (password.equals(repassword)) {
 
 			int status = UserDao.update(u);
 			if (status > 0) {
-				out.print("<p style='color: lightblue;'>Updating saved successfully!</p>");
-//				request.getRequestDispatcher("viewAdmin.jsp?page=1").include(
-//						request, response);
-				 response.sendRedirect("viewAdmin.jsp?page=1");
+				out.print("<h1 style='color: green;'>Updating saved successfully!</h1>");
+				 request.getRequestDispatcher("viewAdmin.jsp?page=1").include(
+				 request, response);
+//				response.sendRedirect("viewAdmin.jsp?page=1");
 			} else {
-				out.println("<p style='color: red;'>Sorry, unable to update user!</p>");
+				out.println("<h1 style='color: red;'>Sorry, unable to update user!</h1>");
 				request.getRequestDispatcher("viewAdmin.jsp?page=1").include(
 						request, response);
 			}
 
 		} else {
-			out.print("<p style='color: red;'>Sorry, your password and repassword is not same! Please repeat updating!</p>");
+			out.print("<h1 style='color: red;'>Sorry, your password and repassword is not same! Please repeat updating!</h1>");
 			request.getRequestDispatcher("editUser.jsp?id=" + u.getUserID())
 					.include(request, response);
 		}

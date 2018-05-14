@@ -76,40 +76,6 @@ public class UserDao {
 		return user;
 	}
 
-	// public static List<User> getUsersByNameOfJob(String nameOfJob) {
-	// List<User> listUser = new ArrayList<User>();
-	// try {
-	// Connection con = ConnectionDao.getConnection();
-	// PreparedStatement ps = con
-	// .prepareStatement("select * from tblUsers where NameOfJob=?");
-	// ps.setString(1, nameOfJob);
-	// ResultSet rs = ps.executeQuery();
-	// if (rs.next()) {
-	// User user = new User();
-	//
-	// user.setUserID(rs.getInt(1));
-	// user.setUserName(rs.getString(2));
-	// user.setPassword(rs.getString(3));
-	// user.setNameAndSurname(rs.getString(4));
-	// user.setAddress(rs.getString(5));
-	// user.setPhoneNumber(rs.getString(6));
-	// user.setEmail(rs.getString(7));
-	// user.setNumberOfIDCard(rs.getString(8));
-	// user.setBloodType(rs.getString(9));
-	// user.setSex(rs.getString(10));
-	// user.setNameOfJob(rs.getString(11));
-	// user.setTypeOfUsers(rs.getString(12));
-	//
-	// listUser.add(user);
-	// }
-	// con.close();
-	// } catch (Exception ex) {
-	// ex.printStackTrace();
-	// }
-	//
-	// return listUser;
-	// }
-
 	public static User getUserByNameAndPassword(String name, String password) {
 		User user = new User();
 		try {
@@ -333,6 +299,8 @@ public class UserDao {
 			ResultSet rs = ps.executeQuery();
 			status = rs.next();
 
+			con.close();
+
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -353,6 +321,8 @@ public class UserDao {
 			ResultSet rs = ps.executeQuery();
 			status = rs.next();
 
+			con.close();
+
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -372,6 +342,8 @@ public class UserDao {
 
 			ResultSet rs = ps.executeQuery();
 			status = rs.next();
+			
+			con.close();
 
 		} catch (Exception e) {
 			System.out.println(e);
@@ -391,6 +363,8 @@ public class UserDao {
 
 			ResultSet rs = ps.executeQuery();
 			status = rs.next();
+			
+			con.close();
 
 		} catch (Exception e) {
 			System.out.println(e);

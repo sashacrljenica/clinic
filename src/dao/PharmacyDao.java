@@ -51,8 +51,8 @@ public class PharmacyDao {
 					.prepareStatement("select * from tblPharmacy ORDER BY NameOfTheDrug;");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				// ovde je objekat user unutar while petlje zato sto
-				// postavljamo vise objekata user u listu listUser!
+				// ovde je objekat ph unutar while petlje zato sto
+				// postavljamo vise objekata ph u listu listPharmacy!
 				Pharmacy ph = new Pharmacy();
 
 				ph.setPharmacyID(rs.getInt(1));
